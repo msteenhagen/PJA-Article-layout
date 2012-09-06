@@ -1,0 +1,195 @@
+% 
+%  pja.sty
+%  «This is a STY-file in development»
+%  
+%  Created by Maarten Steenhagen on 2012-04-25.
+%  Copyright 2012 UCL. All rights reserved.
+% 
+
+% Various packages
+\usepackage{lettrine} % Drop-caps
+\usepackage{graphics} 
+\usepackage{color} 
+\usepackage{clock} 
+\usepackage{epigraph}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black]{hyperref}
+\definecolor{grey}{cmyk}{0,0,0,0.8}
+\setcounter{tocdepth}{0} 
+% Font selection
+\usepackage{fontspec}
+\usepackage{xltxtra}
+\usepackage{xunicode}
+\defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
+\setmainfont[Scale=0.95, Contextuals={WordInitial,WordFinal}, Ligatures={Common}]{Brill}
+\setmonofont[Scale=1.00,Ligatures=NoCommon]{Courier}
+\newfontfamily{\greekscr}[Numbers={OldStyle}, Alternate=1,Contextuals={Inner, Swash,WordFinal}, Ligatures={Rare,Historical}, Script=Greek,Language=Greek]{Brill}
+\newfontfamily{\greek}[Ligatures={Rare,Common}, Script=Greek,Language=Greek]{Brill}
+\newfontface\fancy [Contextuals={WordInitial,WordFinal}]{Minion Pro}
+\newfontface\fancyb [Contextuals={WordInitial,WordFinal}]{Brill}
+\newfontface\fancyi [Contextuals={WordInitial,WordFinal}]{Brill}
+\newfontface\pfancy [Contextuals={WordInitial,WordFinal}]{Hoefler Text}
+
+\usepackage{titlesec}
+\titleformat{\section}{\LARGE\fancyb}{\thesection}{0.5em}{}
+
+%Bibliography
+\usepackage[style=authoryear-ibid, ibidtracker=constrict, autocite=footnote]{biblatex}
+\bibliography{/Users/msteenhagen/Dropbox/Own-Work/BIBLIOGRAPHY/BibDesk/books}
+
+%Headings
+
+
+% \fancyhead{}
+% \fancyhead[RO,RE]{\author}
+% \fancyhead[LO,LE]{~}
+% \fancyfoot{}
+% \fancyfoot[RO,RE]{\thepage}
+
+
+%\usepackage[multiple]{footmisc}
+\usepackage[hang]{footmisc}
+\renewcommand{\hangfootparindent}{1.5em}% Indentation for 2nd etc. paragraphs in footnotes which cosists of more than one paragraph
+\renewcommand{\hangfootparskip}{3pt}% Vertical space between paragraphs in multiparagraph footnotes
+\renewcommand{\footnotemargin}{0.00001pt}% Setting left margin; this is the smallest value I can get to have second etc. lines indented to footnote number; zero put indentation to some positive value, and negative values do not help actually
+\renewcommand{\footnotelayout}{\hspace{1.5em}}% Here you can modify the spacing between the footnote number and the text of footnote; keep this value and \hangfootparindent value the same
+
+%\setlength{\footnotemargin}{2mm}  
+\usepackage{setspace} \oddsidemargin 0cm \evensidemargin 0cm %\pagestyle{myheadings}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.7cm, right=2.7cm]{geometry} 
+\topmargin -0.5cm \parindent 0.6cm \textheight 23cm \parskip 0.2mm \linespread{1.2} 
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\ps@titlepg}{
+   \renewcommand{\@oddhead}{~}%     header blank
+      \renewcommand{\@evenhead}{~}%    header blank
+      \renewcommand{\@oddfoot}{\footnotesize{\copyright ~ \author ~ \year \\ \journalinfo}}%     
+      \renewcommand{\@evenfoot}{\footnotesize{\copyright ~ \author ~ \year \\ \journalinfo}}%
+% \lhead{~}
+% \chead{~}
+% \rhead{~}
+% \lfoot{WEBSITE}
+% \cfoot{~}
+% \rfoot{\thepage}     
+}
+
+\lhead{}
+\chead{}
+\rhead{\textsc \author}
+\lfoot{~}
+\cfoot{~}
+\rfoot{\thepage}
+
+
+% Classic section commands. Use \ssection{xyz} etc.
+\newcommand{\ssection}[1]{%
+  \section[#1]{\centering\normalfont\scshape #1}}
+\newcommand{\ssubsection}[1]{%
+  \subsection[#1]{\raggedright\normalfont\itshape #1}}
+\newcommand{\aref}[4]{(\emph{#4}, #1$^{\textrm{\scriptsize{#2}}}$#3)}
+
+%Various own commands
+\newcommand{\standardbib}{\printbibliography}
+\newcommand{\vz}{\emph{viz.}~}
+\newcommand{\draft}{ \begin{flushright} \underline{\textsc{Draft version, at \today ~}\clocktime}\end{flushright}}
+\newcommand{\cmt}[1]{\marginpar {\begin{spacing}{0.8} \begin{flushleft} \textcolor{red}{\textbf {Note:}}~ {\small \emph{#1}}\end{flushleft}\end{spacing}}}
+
+
+\newcommand{\thetitlex}[1]{\newcommand{\totle}{#1}}
+\newcommand{\thehtitlex}[1]{\newcommand{\htitle}{#1}}
+
+\renewcommand{\theauthor}[1]{\renewcommand{\author}{#1}}
+\newcommand{\theaffilx}[1]{\newcommand{\affil}{#1}}
+\newcommand{\thecontactdx}[1]{\newcommand{\contactd}{#1}}
+\newcommand{\theemailx}[1]{\newcommand{\email}{#1}}
+
+
+\newcommand{\thejournalx}[2]{\newcommand{\journal}{#1} \newcommand{\journalbrief}{#2}}
+\newcommand{\thevolumex}[1]{\newcommand{\volume}{#1}}
+\newcommand{\theissuex}[1]{\newcommand{\issue}{#1}}
+\newcommand{\themonth}[1]{\renewcommand{\month}{#1}}
+\newcommand{\theyear}[1]{\renewcommand{\year}{#1}}
+\newcommand{\thejournalinfo}[1]{\newcommand{\journalinfo}{#1}}
+
+
+\newcommand{\thetitle}[1]{\renewcommand{\totle}{#1}}
+\newcommand{\thehtitle}[1]{\renewcommand{\htitle}{#1}}
+
+%\renewcommand{\theauthor}[1]{\renewcommand{\author}{#1}}
+\newcommand{\theaffil}[1]{\renewcommand{\affil}{#1}}
+\newcommand{\thecontactd}[1]{\renewcommand{\contactd}{#1}}
+\newcommand{\theemail}[1]{\renewcommand{\email}{#1}}
+
+\newcommand{\thejournal}[2]{\renewcommand{\journal}{#1} \renewcommand{\journalbrief}{#2}}
+\newcommand{\thevolume}[1]{\renewcommand{\volume}{#1}}
+\newcommand{\theissue}[1]{\renewcommand{\issue}{#1}}
+% \newcommand{\themonth}[1]{\renewcommand{\month}{#1}}
+% \newcommand{\theyear}[1]{\renewcommand{\year}{#1}}
+
+\newcommand{\FAT}{\fontsize{35}{30}\selectfont}
+\newcommand{\FRONTFAT}{\fontsize{40}{60}\selectfont}
+\newcommand{\pg}{{\pfancy \S}} % For fancy paragraph symbols §
+
+%TITLES
+
+\thetitlex {~} % Fist page (no caps is fine)
+\thehtitlex{~} % Title in the header (no caps is fine)
+
+\theauthor{~}
+\theaffilx{~}
+\thecontactdx{~}
+\theemailx{~} % Will be used on first page, loaded in author.tex
+
+\thejournalx{~}{~} % Left corner subsequent pages
+\thevolumex{~}
+\theissuex{~}
+\themonth{~}
+\theyear{~}
+
+
+\renewcommand{\maketitle}[1]{
+\clearpage
+\setcounter{footnote}{0}
+\setcounter{section}{0}
+\lfoot{~}
+\thispagestyle{titlepg}
+\addcontentsline{toc}{part}{\author,~~`\htitle'}
+\noindent \emph{\journal , Vol. \volume, No. \issue, ~ \month ~ \year}, pp. \pageref{\author}-\pageref{\email}.\\[2cm]
+\label{\author}
+\noindent \FAT{\textsc{#1}}\\[1cm]
+\noindent\LARGE{\author}\\
+\noindent\Large{\emph{\affil}}\\[1.5cm]~}
+%\markboth{L}{R}
+% \cfoot{~}
+% \lfoot{~}
+% 
+% \rfoot{\thepage}
+% \rhead{\textsc{\author}}
+% \lhead{\textsc{~}}
+
+
+
+\newcommand{\signoff}[1]{
+{\flushright \textsc{\affil} \\ \email\\[1cm]}
+\subsubsection*{About the author}\footnotesize{#1}\\[1cm]
+\standardbib
+\lfoot{\footnotesize{\copyright ~ \author~---~\emph{\journal}~\volume(\issue), \year. pp. \pageref{\author}-\pageref{\email}.}}\label{\email}\clearpage}
+
+% \let\thefootnote\relax\footnote[2]{\copyright \author, \emph{\journal , \volume:(\issue)~ \year}.}}}
+
+
+
+
+
+
+
+% \fancyfoot[LE,LO]{\footnotesize{\emph{\journal}}}
+% \fancyfoot[CE,CO]{\footnotesize{\thepage}}
+% \fancyhead[CE]{\textsc{\author}}
+
+% \fancyhead[CO]{\textsc{\htitle}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+\newcommand{\dropcap}[2]{\lettrine[lines=3, lhang=0.00, loversize=0.00]{{\pfancy #1}}{{\large #2}}}

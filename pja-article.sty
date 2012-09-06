@@ -42,7 +42,7 @@
 \definecolor{grey}{cmyk}{0,0,0,0.8}
 
 % Here we define a command that embeds a watermark. 
-\newcommand{\proof}{\SetWatermarkText{Uncorrected Proof}\SetWatermarkLightness{0.95}\SetWatermarkScale{0.7}}
+\newcommand{\proof}[1]{\renewcommand{\@evenhead}{\textsc{\htitle}\\~\\ \texttt{~}} \SetWatermarkText{#1}\SetWatermarkLightness{0.95}\SetWatermarkScale{0.7}}
 % We can now add '\proof' in our preable.
 
 % Here we define a command that writes pdf-information. 
@@ -100,23 +100,24 @@
 % This defines the page style for subsequent pages
 \lhead{}
 \chead{}
-\rhead{\textsc \author}
+\rhead{\textsc \hauthor}
 \lfoot{~}
 \cfoot{~}
 \rfoot{\thepage}
-
+\renewcommand{\@evenhead}{\textsc{\htitle}\\~\\~}
 
 %Various own commands
 \newcommand{\standardbib}{\printbibliography}
 
 % Here we define a margin comment command.
-\newcommand{\cmt}[1]{\marginpar {\begin{spacing}{0.8} \begin{flushleft} \textcolor{red}{\textbf {Note:}}~ {\small \emph{#1}}\end{flushleft}\end{spacing}}}
+\newcommand{\cmt}[1]{\marginpar {\begin{spacing}{0.8} \begin{flushleft} \textcolor{red}{\textbf {Note:}}\\ {\small \emph{#1}}\end{flushleft}\end{spacing}}}
 % Now we can use '\cmt{text}' to print a comment.
 
 % Defines the commands for author information etc.
 \newcommand{\thetitlex}[1]{\newcommand{\totle}{#1}}
 \newcommand{\thehtitlex}[1]{\newcommand{\htitle}{#1}}
 \renewcommand{\theauthor}[1]{\renewcommand{\author}{#1}}
+\newcommand{\thehauthor}[1]{\newcommand{\hauthor}{#1}}
 \newcommand{\theaffilx}[1]{\newcommand{\affil}{#1}}
 \newcommand{\thecontactdx}[1]{\newcommand{\contactd}{#1}}
 \newcommand{\theemailx}[1]{\newcommand{\email}{#1}}
