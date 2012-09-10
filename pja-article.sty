@@ -22,17 +22,18 @@
 \usepackage{titlesec}
 \usepackage[hang]{footmisc}
 \usepackage{setspace}
-\usepackage[top=2.5cm, bottom=2.5cm, left=2.7cm, right=2.7cm]{geometry} 
+%\usepackage[top=2.5cm, bottom=2.5cm, left=2.7cm, right=2.7cm]{geometry} 
+\usepackage[margin=0.8in, paperwidth=15.2cm, paperheight=22.91cm]{geometry}
 \usepackage{fancyhdr}
 
 % Here we set the page margins
 \topmargin -0.5cm 
 \parindent 0.6cm 
-\textheight 23cm 
+\textheight 7in 
 \parskip 0.2mm 
-\linespread{1.2} 
-\oddsidemargin 0cm 
-\evensidemargin 0cm
+\linespread{0.7} 
+\oddsidemargin -0.4cm 
+\evensidemargin -0.4cm
 
 % Here we define what is needed for our bibliography.
 \usepackage[style=authoryear-ibid, ibidtracker=constrict, autocite=footnote]{biblatex}
@@ -62,9 +63,10 @@
 
 % Here we define the fonts used. Brill is set as main font.
 \defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
-\setmainfont[Scale=0.95, Contextuals={WordInitial,WordFinal}, Ligatures={Common}]{Brill}
+\setmainfont[Scale=0.75, Contextuals={WordInitial,WordFinal}, Ligatures={Common}]{Brill}
 \setmonofont[Scale=1.00,Ligatures=NoCommon]{Courier}
-\newfontface\fancy [Contextuals={WordInitial,WordFinal}]{Minion Pro}
+\newfontface\fancy [Contextuals={WordInitial,WordFinal}, Ligatures={Rare,Common}, Scale=1.00, Letters=SmallCaps]{Minion Pro}
+\newfontface\footn [Contextuals={WordInitial,WordFinal}, Ligatures={Rare,Common}, Scale=1.00]{Brill}
 \newfontface\fancyb [Contextuals={WordInitial,WordFinal}]{Brill}
 \newfontface\fancyi [Contextuals={WordInitial,WordFinal}]{Brill}
 \newfontface\pfancy [Contextuals={WordInitial,WordFinal}]{Hoefler Text}
@@ -75,16 +77,16 @@
 % This defines the way section headings appear
 \titleformat{\section}{\LARGE\fancyb}{\thesection}{0.5em}{}
 
-
-% This defines our footnotes
-\renewcommand{\hangfootparindent}{1.5em}
-% Indentation for 2nd etc. paragraphs in footnotes which cosists of more than one paragraph
-\renewcommand{\hangfootparskip}{3pt}
-% Vertical space between paragraphs in multiparagraph footnotes
-\renewcommand{\footnotemargin}{0.00001pt}
-% Setting left margin; this is the smallest value I can get to have second etc. lines indented to footnote number; zero put indentation to some positive value, and negative values do not help actually
-\renewcommand{\footnotelayout}{\hspace{1.5em}}
-% Here you can modify the spacing between the footnote number and the text of footnote; keep this value and \hangfootparindent value the same
+\renewcommand*{\footnotelayout}{\hspace{0.5em}\footn}
+% % This defines our footnotes
+ \renewcommand{\hangfootparindent}{1.5em}
+% % Indentation for 2nd etc. paragraphs in footnotes which cosists of more than one paragraph
+ \renewcommand{\hangfootparskip}{3pt}
+% % Vertical space between paragraphs in multiparagraph footnotes
+\renewcommand{\footnotemargin}{2pt}
+% % Setting left margin; this is the smallest value I can get to have second etc. lines indented to footnote number; zero put indentation to some positive value, and negative values do not help actually
+% \renewcommand{\footnotelayout}{}
+% % Here you can modify the spacing between the footnote number and the text of footnote; keep this value and \hangfootparindent value the same
 
 % This sets the general page style
 \pagestyle{fancy}
@@ -150,7 +152,7 @@
 % We need to renew these in our preamble.
 
 % Here we define some font styles needed for the title
-\newcommand{\FAT}{\fontsize{35}{30}\selectfont}
+\newcommand{\FAT}{\fontsize{30}{30}\selectfont}
 \newcommand{\FRONTFAT}{\fontsize{40}{60}\selectfont}
 \newcommand{\pg}{{\pfancy \S}} % For fancy paragraph symbols §
 
@@ -162,11 +164,11 @@
 \lfoot{~}
 \thispagestyle{titlepg}
 \addcontentsline{toc}{part}{\author,~~`\htitle'}
-\noindent \emph{\journal , Vol. \volume, No. \issue, ~ \month ~ \year}, pp. \pageref{\author}-\pageref{\email}.\\[2cm]
+\noindent \emph{\journal}, Vol. \volume, No. \issue, pp. \pageref{\author}-\pageref{\email}.~ \month ~ \year.\\[2cm]
 \label{\author}
-\noindent \FAT{\textsc{#1}}\\[1cm]
+\noindent {\Huge {\fancy #1}}\\[0.5cm]
 \noindent\LARGE{\author}\\
-\noindent\Large{\emph{\affil}}\\[1.5cm]~}
+\noindent\Large{\emph{\affil}}~\\[0.5cm]}
 
 % Here we define the command that closes the article.
 % This prints author information, and also prints the bibliography.
